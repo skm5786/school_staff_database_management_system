@@ -24,24 +24,33 @@ protected:
 };
 class educational_qualification{
 protected:
-    string generaleducation;
+    string professionaleducation;
 protected:
     educational_qualification(){
-        generaleducation="0";
+        professionaleducation="0";
     }
 //    educational_qualification(string e){
 //        generaleducation=e;
 //    }
     void showgeneraleducation(){
-        cout<<"general education is "<<generaleducation<<"\n";
+        cout<<"professional education is "<<professionaleducation<<"\n";
     }
 };
     class teacher:protected staff,protected educational_qualification{
         string subject;
         int publication;
     public:
+        void updatesubject(){
+            cout<<"enter new subject: ";
+            cin>>subject;
+        }
+        void updatepublication(){
+            cout<<"enter new publication: ";
+            cin>>publication;
+        }
         void getinfo();
         teacher(){};
+        
         void showinfo(){
            
             showcode();
@@ -55,6 +64,10 @@ protected:
 class officer:protected staff,protected educational_qualification{
     int grade;
 public:
+    void updategrade(){
+        cout<<"enter new grade\n";
+        cin>>grade;
+    }
     officer(){};
     void getinfo();
     void showinfo(){
@@ -75,6 +88,10 @@ protected:
 };
 class regulartypist:protected typist{
 public:
+    void updatespeed(){
+        cout<<"enter new speed\n";
+        cin>>speed;
+    }
     regulartypist(){};
     void getinfo();
     void showinfo(){
@@ -87,6 +104,14 @@ public:
 class casualtypist:protected typist{
     int dailywages;
 public:
+    void updatespeed(){
+        cout<<"enter new speed\n";
+        cin>>speed;
+    }
+    void updatedailywages(){
+        cout<<"enter new daily wages\n";
+        cin>>dailywages;
+    }
     casualtypist(){};
     void getinfo();
     void showinfo(){
@@ -107,8 +132,8 @@ void teacher::getinfo(){
     cin>>subject;
     cout<<"enter publication of teacher: ";
     cin>>publication;
-    cout<<"enter general education of teacher: ";
-    cin>>generaleducation;
+    cout<<"enter professional education of teacher: ";
+    cin>>professionaleducation;
 }
 void officer::getinfo(){
     cout<<"enter officer code: ";
@@ -117,8 +142,8 @@ void officer::getinfo(){
     cin>>name;
     cout<<"enter grade of officer: ";
     cin>>grade;
-    cout<<"enter general education of officer: ";
-    cin>>generaleducation;
+    cout<<"enter professional education of officer: ";
+    cin>>professionaleducation;
 }
 void regulartypist::getinfo(){
     cout<<"enter regulartypist code: ";
@@ -144,7 +169,8 @@ int main(){
     casualtypist b[50];
     teacher c[50];
     officer d[50];
-    int k=0,i=0,j=0;
+    int i=0,j=0;
+    int k=0;
     while (1) {
         cout<<setw(40)<<"School database system\n";
         cout<<setw(40)<<"______________________\n";
@@ -156,56 +182,116 @@ int main(){
         cout<<setw(52)<<"press 6 to show casual typist data\n";
         cout<<setw(46)<<"press 7 to show teacher data\n";
         cout<<setw(46)<<"press 8 to show officer data\n";
-        cout<<setw(33)<<"press 9 to exit\n";
+        cout<<setw(39)<<"press 9 to edit  data\n";
+        cout<<setw(34)<<"press 10 to exit\n";
         cin>>k;
         switch (k) {
-            case 1:
+            case (1):
                 cout<<"enter regular typist "<<i+1<<" data\n";
                 a[i].getinfo();
                 i++;
                 break;
-            case 2:
+            case (2):
                 cout<<"enter casual typist "<<i+1<<" data\n";
                 b[i].getinfo();
                 i++;
                 break;
-            case 3:
+            case (3):
                 cout<<"enter teacher "<<i+1<<" data\n";
                 c[i].getinfo();
                 i++;
                 break;
-            case 4:
+            case (4):
                 cout<<"enter officer "<<i+1<<" data\n";
                 d[i].getinfo();
                 i++;
                 break;
-            case 5:
+            case (5):
                 cout<<"enter regulartypist number\n";
                 cin>>j;
                 a[j-1].showinfo();
                 break;
-            case 6:
+            case (6):
                 cout<<"enter casualtypist number\n";
                 cin>>j;
-                a[j-1].showinfo();
+                b[j-1].showinfo();
                 break;
-            case 7:
+            case (7):
                 cout<<"enter teacher number\n";
                 cin>>j;
-                a[j-1].showinfo();
+                c[j-1].showinfo();
                 break;
-            case 8:
+            case (8):
                 cout<<"enter officer number\n";
                 cin>>j;
-                a[j-1].showinfo();
+                d[j-1].showinfo();
                 break;
             case 9:
-                exit(1);
+            {
+                int j=0,l=0;
+                char m='\0';
+                cout<<"enter 1 to update regular typist data\n";
+                cout<<"enter 2 to update casual typist data\n";
+                cout<<"enter 3 to update teacher data\n";
+                cout<<"enter 4 to update officer data\n";
+                cin>>j;
+                switch (j) {
+                    case 1:
+                        cout<<"enter regular typist no: ";
+                        cin>>l;
+                        a[l-1].updatespeed();
+                        break;
+                    case 2:
+                        cout<<"enter casual typist no: ";
+                        cin>>l;
+                        cout<<"press 1 to update speed: \n";
+                        cout<<"press 2 to update daily wages: \n";
+                        cin>>m;
+                        switch (m) {
+                            case ('1'):
+                                b[l-1].updatespeed();
+                                break;
+                            case ('2'):
+                                b[l-1].updatedailywages();
+                                break;
+                            default:
+                                cout<<"you have entered wrong code\n";
+                                break;
+                        }
+                        break;
+                    case 3:
+                        cout<<"enter teacher no: ";
+                        cin>>l;
+                        cout<<"press 1 to update subject: \n";
+                        cout<<"press 2 to update publication: \n";
+                        cin>>m;
+                        switch (m) {
+                            case ('1'):
+                                c[l-1].updatesubject();
+                                break;
+                            case ('2'):
+                                c[l-1].updatepublication();
+                                break;
+                            default:
+                                cout<<"you have entered wrong code\n";
+                                break;
+                        }
+                        break;
+                    case 4:
+                        cout<<"enter officer no: ";
+                        cin>>l;
+                        d[l-1].updategrade();
+                    default:
+                        cout<<"you have entered wrong code\n";
+                        break;
+                }
+            }
+            case 10:
+                exit(0);
             default:
                 cout<<"you have entered wrong code\n";
                 break;
         }
     }
-    
     return 0;
 }
