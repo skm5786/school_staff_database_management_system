@@ -228,8 +228,8 @@ int main(){
                 break;
             case 9:
             {
-                int j=0,l=0;
-                char m='\0';
+                int j=0,l=0, m=0;
+                ;
                 cout<<"enter 1 to update regular typist data\n";
                 cout<<"enter 2 to update casual typist data\n";
                 cout<<"enter 3 to update teacher data\n";
@@ -248,10 +248,10 @@ int main(){
                         cout<<"press 2 to update daily wages: \n";
                         cin>>m;
                         switch (m) {
-                            case ('1'):
+                            case (1):
                                 b[l-1].updatespeed();
                                 break;
-                            case ('2'):
+                            case (2):
                                 b[l-1].updatedailywages();
                                 break;
                             default:
@@ -266,10 +266,10 @@ int main(){
                         cout<<"press 2 to update publication: \n";
                         cin>>m;
                         switch (m) {
-                            case ('1'):
+                            case (1):
                                 c[l-1].updatesubject();
                                 break;
-                            case ('2'):
+                            case (2):
                                 c[l-1].updatepublication();
                                 break;
                             default:
@@ -284,10 +284,12 @@ int main(){
                     default:
                         cout<<"you have entered wrong code\n";
                         break;
-                }
+                
             }
+            }
+                break;
             case 10:
-                exit(0);
+                exit(1);
             default:
                 cout<<"you have entered wrong code\n";
                 break;
