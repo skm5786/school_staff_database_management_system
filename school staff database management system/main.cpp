@@ -11,10 +11,10 @@ protected:
         code=0;
         name="0";
     }
-    staff(int a,string p){
-        code =a;
-        name=p;
-    }
+//    staff(int a,string p){
+//        code =a;
+//        name=p;
+//    }
     void showcode(){
         cout<<"code is "<<code<<"\n";
     }
@@ -29,16 +29,16 @@ protected:
     educational_qualification(){
         generaleducation="0";
     }
-    educational_qualification(string e){
-        generaleducation=e;
-    }
+//    educational_qualification(string e){
+//        generaleducation=e;
+//    }
     void showgeneraleducation(){
         cout<<"general education is "<<generaleducation<<"\n";
     }
 };
     class teacher:protected staff,protected educational_qualification{
         string subject;
-        string publication;
+        int publication;
     public:
         void getinfo();
         teacher(){};
@@ -145,28 +145,6 @@ int main(){
     teacher c[50];
     officer d[50];
     int k=0,i=0,j=0;
- /*   regulartypist a;
-    a.getinfo();
-    cout<<"\n";
-    a.showinfo();
-    cout<<"\n";
-    casualtypist b;
-    b.getinfo();
-    cout<<"\n";
-    b.showinfo();
-    cout<<"\n";
-    teacher c;
-    c.getinfo();
-    cout<<"\n";
-    c.showinfo();
-    cout<<"\n";
-    c.showinfo();
-    cout<<"\n";
-    officer d;
-    d.getinfo();
-    cout<<"\n";
-    d.showinfo();
-    cout<<"\n";  */
     while (1) {
         cout<<setw(40)<<"School database system\n";
         cout<<setw(40)<<"______________________\n";
@@ -174,43 +152,57 @@ int main(){
         cout<<setw(53)<<"press 2 to enter casual typist data\n";
         cout<<setw(47)<<"press 3 to enter teacher data\n";
         cout<<setw(47)<<"press 4 to enter officer data\n";
-        cout<<setw(54)<<"press 5 to show regular typist data\n";
-        cout<<setw(53)<<"press 6 to show casual typist data\n";
-        cout<<setw(47)<<"press 7 to show teacher data\n";
-        cout<<setw(47)<<"press 8 to show officer data\n";
-        cout<<setw(47)<<"press 9 to exit\n";
+        cout<<setw(53)<<"press 5 to show regular typist data\n";
+        cout<<setw(52)<<"press 6 to show casual typist data\n";
+        cout<<setw(46)<<"press 7 to show teacher data\n";
+        cout<<setw(46)<<"press 8 to show officer data\n";
+        cout<<setw(33)<<"press 9 to exit\n";
         cin>>k;
         switch (k) {
             case 1:
-                cout<<"enter regular typist "<<i+1<<"data\n";
-                a[i].showinfo();
+                cout<<"enter regular typist "<<i+1<<" data\n";
+                a[i].getinfo();
                 i++;
                 break;
             case 2:
-                cout<<"enter casual typist "<<i+1<<"data\n";
-                b[i].showinfo();
+                cout<<"enter casual typist "<<i+1<<" data\n";
+                b[i].getinfo();
                 i++;
+                break;
             case 3:
-                cout<<"enter teacher "<<i+1<<"data\n";
-                c[i].showinfo();
+                cout<<"enter teacher "<<i+1<<" data\n";
+                c[i].getinfo();
                 i++;
+                break;
             case 4:
-                cout<<"enter officer "<<i+1<<"data\n";
-                d[i].showinfo();
+                cout<<"enter officer "<<i+1<<" data\n";
+                d[i].getinfo();
                 i++;
+                break;
             case 5:
                 cout<<"enter regulartypist number\n";
                 cin>>j;
                 a[j-1].showinfo();
+                break;
             case 6:
                 cout<<"enter casualtypist number\n";
                 cin>>j;
                 a[j-1].showinfo();
+                break;
             case 7:
                 cout<<"enter teacher number\n";
                 cin>>j;
                 a[j-1].showinfo();
+                break;
+            case 8:
+                cout<<"enter officer number\n";
+                cin>>j;
+                a[j-1].showinfo();
+                break;
+            case 9:
+                exit(1);
             default:
+                cout<<"you have entered wrong code\n";
                 break;
         }
     }
